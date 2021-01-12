@@ -22,18 +22,18 @@ public class Manufacturer {
 		super();
 	}
 
-	public Manufacturer(Long id, String name) {
+	public Manufacturer(Long manufacturerId, String name) {
 		super();
-		this.id = id;
+		this.manufacturerId = manufacturerId;
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getManufacturerId() {
+		return manufacturerId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setManufacturerId(Long manufacturerId) {
+		this.manufacturerId = manufacturerId;
 	}
 
 	public String getName() {

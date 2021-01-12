@@ -2,7 +2,6 @@ package com.lhleonardo.apisales.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ public class Product {
 	@Column(nullable = false)
 	private String barcode;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "manufacturerId")
 	private Manufacturer manufacturer;
 	
@@ -38,10 +37,10 @@ public class Product {
 		super();
 	}
 
-	public Product(Long id, String name, String description, String barcode, Manufacturer manufacturer,
+	public Product(Long productId, String name, String description, String barcode, Manufacturer manufacturer,
 			Double unitPrice) {
 		super();
-		this.id = id;
+		this.productId = productId;
 		this.name = name;
 		this.description = description;
 		this.barcode = barcode;
@@ -49,12 +48,12 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public String getName() {
@@ -96,6 +95,4 @@ public class Product {
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-	
-	
 }
