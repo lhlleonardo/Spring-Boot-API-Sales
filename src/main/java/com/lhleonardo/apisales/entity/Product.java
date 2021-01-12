@@ -2,9 +2,11 @@ package com.lhleonardo.apisales.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,7 +16,7 @@ public class Product {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long productId;
 	
 	@Column(nullable = false)
 	private String name;
@@ -25,14 +27,26 @@ public class Product {
 	@Column(nullable = false)
 	private String barcode;
 	
-	@Column(nullable = false)
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "manufacturerId")
 	private Manufacturer manufacturer;
 	
 	@Column(nullable = false)
 	private Double unitPrice;
 
 	public Product() {
+		super();
+	}
+
+	public Product(Long id, String name, String description, String barcode, Manufacturer manufacturer,
+			Double unitPrice) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.barcode = barcode;
+		this.manufacturer = manufacturer;
+		this.unitPrice = unitPrice;
 	}
 
 	public Long getId() {

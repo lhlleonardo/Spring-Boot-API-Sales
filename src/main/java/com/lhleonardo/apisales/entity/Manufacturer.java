@@ -13,12 +13,19 @@ public class Manufacturer {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long manufacturerId;
 	
 	@Column(nullable = false)
 	private String name;
 
 	public Manufacturer() {
+		super();
+	}
+
+	public Manufacturer(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
 	}
 
 	public Long getId() {
