@@ -20,5 +20,4 @@ public class ManufacturerController {
     public List<Manufacturer> Get() {
         return _manufacturerRepository.findAll();
     }
-    
 }
