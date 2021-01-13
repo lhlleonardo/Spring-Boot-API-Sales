@@ -8,4 +8,6 @@ import com.lhleonardo.apisales.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
+	Product save(Product product);
+
 }

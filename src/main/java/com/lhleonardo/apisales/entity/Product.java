@@ -1,5 +1,8 @@
 package com.lhleonardo.apisales.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productId;
 	
 	@Column(nullable = false)
@@ -26,8 +31,8 @@ public class Product {
 	@Column(nullable = false)
 	private String barcode;
 	
-	@ManyToOne
-	@JoinColumn(name = "manufacturerId")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="manufacturerId")
 	private Manufacturer manufacturer;
 	
 	@Column(nullable = false)
@@ -94,5 +99,5 @@ public class Product {
 
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
-	}
+	}	
 }
