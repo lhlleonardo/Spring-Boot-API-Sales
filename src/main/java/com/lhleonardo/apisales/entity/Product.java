@@ -22,21 +22,19 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productId;
 	
-	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false)
 	private String description;
 	
-	@Column(nullable = false)
 	private String barcode;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="manufacturerId")
 	private Manufacturer manufacturer;
 	
-	@Column(nullable = false)
 	private Double unitPrice;
+	
+	private Double units;
 
 	public Product() {
 		super();
@@ -51,6 +49,7 @@ public class Product implements Serializable {
 		this.barcode = barcode;
 		this.manufacturer = manufacturer;
 		this.unitPrice = unitPrice;
+		this.units = units;
 	}
 
 	public Long getProductId() {
@@ -99,5 +98,13 @@ public class Product implements Serializable {
 
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+	public Double getUnits() {
+		return units;
+	}
+
+	public void setUnits(Double units) {
+		this.units = units;
 	}	
 }
